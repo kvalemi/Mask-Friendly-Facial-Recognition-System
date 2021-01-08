@@ -41,7 +41,18 @@ Let's now take a closer look at each of the three classifiers.
 
 ![](/Diagrams/System%20Diagrams-Masked%20Identifier.jpg)
 
+## Testing the System
 
+I trained the facial identification classifiers on my own face, masked and unmasked, and tested it accordingly. Note that this system can be trained to recognize any one persons face so there is no restrictions on only recognizing my face. Moreover, I used Batch Image Processing to processes several test images (images it hasn't seen before) and see the outcome. Although not perfect, the classifier did manage to do pretty well. See below for the outcome of the Batch Image processing.
 
+![](/Output/Not_Recognized!_1609964614.5133271.png)
 
+![](/Output/Recognized!_1609964627.393876.png)
 
+![](/Output/Not_Recognized!_1609964638.096912.png)
+
+![](/Output/Recognized!_1609964618.2151308.png)
+
+More test examples can be seen the output directory of the repo.
+
+## Building the Project
