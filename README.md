@@ -19,6 +19,7 @@ With that said, I did implemented three interfaces for interacting with the syst
 3) **Batch Image Processing**: The system will read in a batch of images from an inputted directory and will classify all of the images at once.
 
 
+
 ## System Design
 
 The overall system is best described by the following diagram that I created:
@@ -41,6 +42,8 @@ Let's now take a closer look at each of the three classifiers.
 
 ![](/Diagrams/System%20Diagrams-Masked%20Identifier.jpg)
 
+
+
 ## Testing the System
 
 I trained the facial identification classifiers on my own face, masked and unmasked, and tested it accordingly. Note that this system can be trained to recognize any one persons face so there is no restrictions on only recognizing my face. Moreover, I used Batch Image Processing to processes several test images (images it hasn't seen before) and see the outcome. Although not perfect, the classifier did manage to do pretty well. See below for the outcome of the Batch Image processing.
@@ -55,4 +58,42 @@ I trained the facial identification classifiers on my own face, masked and unmas
 
 More test examples can be seen the output directory of the repo.
 
+
+
 ## Building the Project
+
+1) Populate the `./FR_Masked/Dataset/Person/` directory with masked pictures of the person needing to be recognized by the system. Examples of these type of pictures can be seen in the `./Test_Images/` directory (only consider masked pictures of my face from this directory).
+
+2) Populate the `./FR_Non_Masked/Dataset/Person/` directory with non-masked pictures of the person needing to be recognized by the system. Examples of these type of pictures can be seen in the `./Test_Images/` directory (only consider unmasked pictures of my face from this directory).
+
+3) Populate the `./Mask_Detector/Dataset/Face_Mask/` directory with images of one person wearing a mask. Many datasets that contain these type of images can be found on kaggle.
+
+4) Populate the `./Mask_Detector/Dataset/No_Mask/` directory with images of one person not wearing a mask. Many datasets that contain these type of images can be found on kaggle.
+
+5) Run the following three training scripts to train each of the classifiers:
+
+- `./FR_Masked/Train_Model`
+
+- `./FR_Non_Masked/Train_Model`
+
+- `./Mask_Detector/Train_Model`
+
+A notebook is located in each of the above directories if you would like to take a closer look at the training code in a notebook.
+
+6) Once all of the models are serialized to disk as `h5` files, then you can executed each of the interfaces like so:
+
+- `Python3 Single_Image_Processing.py '[directory of image]'`
+
+- `Python3 Batch_Image_Processing.py '[directory of batch of image]'`
+
+- `Python3 Live_Feed_Processing.py` (Ensure that the code for the camera is set up correctly)
+
+
+
+## Datasets to Consider
+
+Face mask dataset (to be used for `Mask Detection Classifier`): https://www.kaggle.com/andrewmvd/face-mask-detection
+
+
+
+
